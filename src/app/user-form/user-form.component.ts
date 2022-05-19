@@ -46,9 +46,9 @@ export class UserFormComponent implements OnInit {
     this.messageService.clear();
     if(this.registerForm.valid){
       let user = this.registerForm.value;
-      console.log(user)
+      //console.log(user)
       this.appService.registerUser(user).subscribe( data => {
-        console.log(data);
+        //console.log(data);
         this.user = data;
         this.formType = "VIEW";
         this.registerForm.reset();
@@ -57,12 +57,12 @@ export class UserFormComponent implements OnInit {
         //se errore è unico, lo mostro con messageService
         if(!(ret.error[0].length>1)){
           if(ret.error[0].field){
-            console.log(JSON.stringify(ret.error[0]));
+            //console.log(JSON.stringify(ret.error[0]));
             this.messageService.add({severity:'error', summary: ret.error[0].field, detail: ret.error[0].message});
             const element = document.getElementById(ret.error[0].field);
             setTimeout(() => element?.focus(), 0);
           }else{
-            console.log(JSON.stringify(ret.error[0]));
+            //console.log(JSON.stringify(ret.error[0]));
             this.messageService.add({severity:'error', summary: 'Error', detail: ret.error[0].message});
           }
         }
@@ -76,28 +76,23 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  resetRegister(){
-    this.formType = "REGISTER";
-    this.registerForm.reset();
-  }
-
   onSearchId(){
     this.messageService.clear();
       this.appService.getUser(this.userId).subscribe( data => {
-        console.log(data);
+        //console.log(data);
         this.user = data;
         this.formType = "VIEW";
       }, ret => {
-        console.log(ret);
+        //console.log(ret);
         //se errore è unico, lo mostro con messageService
         if(!(ret.error.length>1)){
           if(ret.error.field){
-            console.log(JSON.stringify(ret.error));
+            //console.log(JSON.stringify(ret.error));
             this.messageService.add({severity:'error', summary: ret.error.field, detail: ret.error.message});
             const element = document.getElementById(ret.error.field);
             setTimeout(() => element?.focus(), 0);
           }else{
-            console.log(JSON.stringify(ret.error));
+            //console.log(JSON.stringify(ret.error));
             this.messageService.add({severity:'error', summary: 'Error', detail: ret.error.message});
           }
         }

@@ -1,0 +1,13 @@
+.center-item{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-card{
+    height: 80vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,128 @@
+<p-card [header]="formType" [style]="{'width': '25rem'}">
+
+    <!--REGISTER FORM START-->
+    <div *ngIf="formType === 'REGISTER'">
+
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit()"> 
+    
+            <div class="p-fluid grid">
+            
+            <div class="col-12 md:col-4 field p-fluid" style="padding-bottom:0.5em;">
+                    <span class="p-float-label">
+                        <input id="name" pInputText formControlName="name">
+                        <label for="name">Name</label>
+                    </span>
+                    <small *ngIf="registerForm.controls.name.errors?.required" class="p-error">Required</small>
+            </div>
+    
+            <br>
+    
+            <div class="col-12 md:col-4 field p-fluid" style="padding-bottom:0.5em;">
+                    <span class="p-float-label">
+                        <input id="email" pInputText formControlName="email">
+                        <label for="email">Email</label>
+                    </span>
+                    <small *ngIf="registerForm.controls.email.errors?.email" class="p-error">Invalid mail</small>
+                    <small *ngIf="registerForm.controls.email.errors?.required" class="p-error">Required</small>
+            </div>
+            
+            <br>
+            
+            <div class="col-12 md:col-4 field p-fluid" style="padding-bottom:0.5em;">
+                <div class="p-float-label">
+                    <p-dropdown inputId="gender" [autoDisplayFirst]="false" [options]="genders" formControlName="gender" optionLabel="name" optionValue="code"></p-dropdown>
+                    <label for="gender">Gender</label>
+                </div>
+                <small *ngIf="registerForm.controls.gender.errors?.required" class="p-error">Required</small>
+            </div>
+            
+            <br>
+    
+            <div class="col-12 md:col-4 field p-fluid">
+                <div class="p-float-label">
+                    <p-dropdown inputId="status" [autoDisplayFirst]="false" [options]="statuses" formControlName="status" optionLabel="name" optionValue="code"></p-dropdown>
+                    <label for="status">Status</label>
+                </div>
+                <small *ngIf="registerForm.controls.status.errors?.required" class="p-error">Required</small>
+            </div>
+            
+            <br>
+        </div>
+        <div style="text-align: center;">
+            <button pButton type="submit" [disabled]="registerForm.invalid" >SUBMIT</button>
+        </div>
+    </form>
+    </div>
+<!--REGISTER FORM END-->
+
+<!--VIEW USER START-->
+<div *ngIf="formType === 'VIEW'">
+
+    <div class="p-fluid grid">
+    
+        <div class="col-12 md:col-4 field p-fluid" style="padding-bottom:1.5em;">
+                <span class="p-float-label">
+                    <input pInputText [(ngModel)]="user.id" [disabled]="true">
+                    <label for="name">ID</label>
+                </span>
+        </div>
+    
+        <br>
+        
+        <div class="col-12 md:col-4 field p-fluid" style="padding-bottom:0.5em;">
+                <span class="p-float-label">
+                    <input id="name" pInputText [(ngModel)]="user.name" [disabled]="true">
+                    <label for="name">Name</label>
+                </span>
+        </div>
+    
+        <br>
+    
+        <div class="col-12 md:col-4 field p-fluid" style="padding-bottom:0.5em;">
+                <span class="p-float-label">
+                    <input id="email" pInputText [(ngModel)]="user.email" [disabled]="true">
+                    <label for="email">Email</label>
+                </span>
+        </div>
+        
+        <br>
+        
+        <div class="col-12 md:col-4 field p-fluid" style="padding-bottom:0.5em;">
+            <div class="p-float-label">
+                <p-dropdown inputId="gender" [(ngModel)]="user.gender" [autoDisplayFirst]="false" [options]="genders"  [disabled]="true" optionLabel="name" optionValue="code"></p-dropdown>
+                <label for="gender">Gender</label>
+            </div>
+        </div>
+        
+        <br>
+    
+        <div class="col-12 md:col-4 field p-fluid">
+            <div class="p-float-label">
+                <p-dropdown inputId="status" [(ngModel)]="user.status" [autoDisplayFirst]="false" [options]="statuses"  [disabled]="true" optionLabel="name" optionValue="code"></p-dropdown>
+                <label for="status">Status</label>
+            </div>
+        </div>
+        
+        <br>
+    </div>
+</div>
+<!--VIEW USER END-->
+
+<!--SEARCH ID START-->
+<div  *ngIf="formType === 'SEARCH'">
+    <div class="p-fluid grid"> 
+        <div class="col-12 md:col-4 field p-fluid" style="padding-bottom: 0.5em;" >
+                <span class="p-float-label">
+                    <input pInputText [(ngModel)]="userId" >
+                    <label for="name">ID</label>
+                </span>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <button pButton type="button" [disabled]="!userId" (click)="onSearchId()" >SUBMIT</button>
+        </div>
+</div>
+<!--SEARCH ID END-->
+
+</p-card>
+<p-messages></p-messages>

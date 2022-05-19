@@ -1,0 +1,13 @@
+
+<div class="center-item">
+    <p-card header="Test sviluppatori" [style]="{'max-height': '5rem'}" (click)="refresh()"></p-card>
+</div>
+
+<div class="center-item">
+  <button pButton type="button" label="SEARCH USER" (click)="getUserFromId()" ></button>
+  <button pButton type="button" label="REGISTER USER" (click)="register()" style="margin-left: 1vh;" ></button>
+</div>
+
+<div class="center-card" *ngIf="formType">
+  <app-user-form [formType]="formType" ></app-user-form>
+</div>

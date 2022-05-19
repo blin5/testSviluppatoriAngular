@@ -11,7 +11,7 @@ Run `npm install` to install all the packages from `package.json` , necessary fo
 
 ## Add API token
 
-Add API token in `testSviluppatoriAngular\src\environments.ts` file.
+Add API token in `testSviluppatoriAngular\src\environments\environments.ts` file.
 
 ## Start development server
 
